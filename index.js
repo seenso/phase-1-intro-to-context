@@ -21,10 +21,24 @@ function createEmployeeRecords(array) {
   return employeeRecords; //arr of objs
 };
 
-function createTimeInEvent(empObj, date) {};
+function createTimeInEvent(empObj, dateStr) {
+  const dateStamp = dateStr.slice(0, 10);
+  const hourStamp = parseInt(dateStr.slice(11, 15));
+
+  //returns employee record
+  empObj.timeInEvents.push({type: "TimeIn", hour: hourStamp, date: dateStamp});
+  return empObj;
+};
 
 
-function createTimeOutEvent(empObj, date) {};
+function createTimeOutEvent(empObj, dateStr) {
+  const dateStamp = dateStr.slice(0, 10);
+  const hourStamp = parseInt(dateStr.slice(11, 15));
+
+  //returns employee record
+  empObj.timeOutEvents.push({type: "TimeOut", hour: hourStamp, date: dateStamp});
+  return empObj;
+};
 
 function hoursWorkedOnDate(empObj, date) {};
 
