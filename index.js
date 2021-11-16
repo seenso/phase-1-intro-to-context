@@ -13,18 +13,23 @@ function createEmployeeRecord(array) {
 function createEmployeeRecords(array) {
   let employeeRecords = [];
 
+  array.forEach(nestedArr => {
+    let newRecord = createEmployeeRecord(nestedArr);
+    employeeRecords.push(newRecord);
+  });
+
   return employeeRecords; //arr of objs
 };
 
-function createTimeInEvent() {};
+function createTimeInEvent(empObj, date) {};
 
 
-function createTimeOutEvent() {};
+function createTimeOutEvent(empObj, date) {};
 
-function hoursWorkedOnDate() {};
+function hoursWorkedOnDate(empObj, date) {};
 
-function wagesEarnedOnDate() {};
+function wagesEarnedOnDate(empObj, date) {};
 
-function allWagesFor() {};
+function allWagesFor(empObj) {};
 
-function calculatePayroll() {};
+function calculatePayroll(array) {};
