@@ -66,6 +66,15 @@ function wagesEarnedOnDate(empObj, dateStr) {
   return hoursWorkedOnDate(empObj, dateStr) * empObj.payPerHour;
 };
 
-function allWagesFor(empObj) {};
+function allWagesFor(empObj) {
+  let totalWages = 0;
+  let dates = empObj.timeOutEvents; //using timeOut dates in case employee is currently in a shift
+
+  for (let i = 0; i < dates.length; i++) {
+    totalWages += wagesEarnedOnDate(empObj, dates[i].date);
+  }
+
+  return totalWages;
+};
 
 function calculatePayroll(array) {};
