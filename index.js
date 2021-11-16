@@ -63,7 +63,7 @@ function hoursWorkedOnDate(empObj, dateStr) {
 };
 
 function wagesEarnedOnDate(empObj, dateStr) {
-  // return hoursWorkedOnDate(empObj, dateStr) * empObj.payPerHour;
+  return hoursWorkedOnDate(empObj, dateStr) * empObj.payPerHour;
 };
 
 function allWagesFor(empObj) {};
