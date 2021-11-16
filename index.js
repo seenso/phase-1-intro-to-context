@@ -77,4 +77,12 @@ function allWagesFor(empObj) {
   return totalWages;
 };
 
-function calculatePayroll(array) {};
+function calculatePayroll(array) {
+  let payroll = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    payroll += allWagesFor(array[i]);
+  }
+
+  return payroll;
+};
