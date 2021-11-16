@@ -45,18 +45,18 @@ function hoursWorkedOnDate(empObj, dateStr) {
   const timeOutArr = empObj.timeOutEvents; //arr of objs
 
   //find time in for dateStr
-  for (let i = 0; i < timeInArr.length; i ++) {
-    if(timeInArr[i].date === dateStr) {
-      timeIn += timeInArr[i].hour;
+  timeInArr.forEach(timeInRecord => {
+    if(timeInRecord.date === dateStr) {
+      timeIn += timeInRecord.hour;
     }
-  }
+  });
 
   //find time out for dateStr
-  for (let j = 0; j < timeOutArr.length; j++) {
-    if(timeOutArr[j].date === dateStr) {
-      timeOut += timeOutArr[j].hour;
+  timeOutArr.forEach(timeOutRecord => {
+    if(timeOutRecord.date === dateStr) {
+      timeOut += timeOutRecord.hour;
     }
-  }
+  });
   
   //calculate hours worked
   return (timeOut - timeIn)/100; //convert from military HHMM time to decimal
@@ -70,9 +70,9 @@ function allWagesFor(empObj) {
   let totalWages = 0;
   let dates = empObj.timeOutEvents; //using timeOut dates in case employee is currently in a shift
 
-  for (let i = 0; i < dates.length; i++) {
-    totalWages += wagesEarnedOnDate(empObj, dates[i].date);
-  }
+  dates.forEach(dateRecord => {
+    totalWages += wagesEarnedOnDate(empObj, dateRecord.date);
+  });
 
   return totalWages;
 };
@@ -80,9 +80,9 @@ function allWagesFor(empObj) {
 function calculatePayroll(array) {
   let payroll = 0;
 
-  for (let i = 0; i < array.length; i++) {
-    payroll += allWagesFor(array[i]);
-  }
+  array.forEach(employee => {
+    payroll += allWagesFor(employee);
+  });
 
   return payroll;
 };
